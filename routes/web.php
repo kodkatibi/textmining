@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [\App\Http\Controllers\HomeController::class,'index'])->name('home');
+Route::post('/compute', [\App\Http\Controllers\HomeController::class,'compute'])->name('compute');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
