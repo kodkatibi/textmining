@@ -17,7 +17,7 @@ class HomeController extends Controller
         $totalLenght = \Str::length($request->text);
         $wordCount = str_word_count($request->text);
         $sentenceCount=\Str::substrCount($request->text,'.');
-        dd($totalLenght,$wordCount,$sentenceCount);
+
         return redirect()->route('home');
     }
 }
