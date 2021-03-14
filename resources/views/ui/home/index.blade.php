@@ -5,6 +5,28 @@
 
     <!-- CKEditor -->
     <div class="col-lg-12">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $message)
+                        <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        @if(session('success'))
+            <div class="alert alert-success">
+                <li>{{ session('success') }}</li>
+            </div>
+        @endif
+
+            @if(isset($wordCount))
+                <div class="alert alert-success">
+                    <li>Total Lenght: {{$totalLenght}}</li>
+                    <li>Word Count: {{$wordCount}}</li>
+                    <li>Sentence Count: {{$sentenceCount}}</li>
+                </div>
+            @endif
         <section class="panel">
             <header class="panel-heading">
                 Text

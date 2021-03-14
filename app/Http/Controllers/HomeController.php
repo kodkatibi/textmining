@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(array $data=[])
     {
-        return view('ui.home.index');
+        return view('ui.home.index',$data);
     }
 
     public function compute(Request $request)
@@ -18,6 +18,12 @@ class HomeController extends Controller
         $wordCount = str_word_count($request->text);
         $sentenceCount=\Str::substrCount($request->text,'.');
 
-        return redirect()->route('home');
+        $data=array(
+          'totalLenght'=>$totalLenght,
+          'wordCount'=>$wordCount,
+          'sentenceCount'=>$sentenceCount,
+        );
+
+        return $this->index($data);
     }
 }
